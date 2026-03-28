@@ -1,0 +1,516 @@
+import { StyleSheet } from "react-native";
+
+export default StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: "#f0f2f5",
+  },
+
+  /* ── HEADER / LOGO ── */
+  header: {
+    backgroundColor: "#fff",
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    marginTop: 5,
+    marginBottom: -19,
+  },
+  headerLogo: {
+    width: 100,
+    height: 55,
+  },
+
+  /* ── STEPPER ── */
+  stepperContainer: {
+    flexDirection: "row",
+    backgroundColor: "#f0f2f5",
+    borderBottomWidth: 0,
+    paddingHorizontal: 16,
+    marginHorizontal: 0,
+  },
+  stepWrapper: {
+    flex: 1,
+    alignItems: "center",
+    paddingVertical: 14,
+    paddingHorizontal: 0,
+  },
+  stepLabel: {
+    fontSize: 10,
+    fontWeight: "900",
+    color: "#9ca3af",
+    textAlign: "center",
+    marginBottom: 8,
+  },
+  stepLabelPast: {
+    color: "#1F1F9C",
+    fontWeight: "600",
+  },
+  stepLabelCurrent: {
+    color: "#1F1F9C",
+    fontWeight: "700",
+  },
+  stepLineTrack: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 4,
+    backgroundColor: "#d1d5db",
+    borderRadius: 0,
+  },
+  stepLineFillActive: {
+    height: 4,
+    width: "100%",
+    backgroundColor: "#FEC956",
+    borderRadius: 0,
+  },
+
+  /* ── LAYOUT ── */
+  container: {
+    flex: 1,
+  },
+  content: {
+    padding: 16,
+    paddingBottom: 120,
+  },
+
+  /* ── CARD ── */
+  card: {
+    backgroundColor: "#fff",
+    borderRadius: 16,
+    padding: 20,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 10,
+    elevation: 3,
+  },
+  cardTitle: {
+    fontSize: 18,
+    fontWeight: "900",
+    color: "#00007F",
+    marginBottom: 18,
+  },
+
+  /* ── DOCUMENT ITEM ── */
+  docItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 14,
+    paddingHorizontal: 14,
+    borderWidth: 1,
+    borderColor: "#e5e7eb",
+    borderRadius: 10,
+    marginBottom: 10,
+    backgroundColor: "#fff",
+  },
+  docItemSelected: {
+    borderColor: "#1a1a6e",
+    borderWidth: 2,
+    backgroundColor: "#fff",
+  },
+  checkbox: {
+    width: 22,
+    height: 22,
+    borderRadius: 4,
+    borderWidth: 2,
+    borderColor: "#9ca3af",
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 14,
+    backgroundColor: "#fff",
+  },
+  checkboxSelected: {
+    backgroundColor: "#1a1a6e",
+    borderColor: "#1a1a6e",
+  },
+  docInfo: {
+    flex: 1,
+  },
+  docName: {
+    fontSize: 12,
+    fontWeight: "900",
+    color: "#4D4D4D",
+    marginBottom: 2,
+  },
+  docDesc: {
+    fontSize: 11,
+    color: "#4D4D4D",
+  },
+  docPrice: {
+    fontSize: 12,
+    fontWeight: "700",
+    color: "#1a1a1a",
+  },
+
+  /* ── COPY COUNTER ── */
+  copyRow: {
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    alignItems: "center",
+    paddingHorizontal: 14,
+    paddingBottom: 10,
+    paddingTop: 6,
+    marginTop: -6,
+    marginBottom: 4,
+    borderWidth: 2,
+    borderTopWidth: 0,
+    borderColor: "#1a1a6e",
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+    backgroundColor: "#fff",
+  },
+  copyLabel: {
+    fontSize: 11,
+    color: "#6b7280",
+    marginRight: 8,
+  },
+  copyControl: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: "#d1d5db",
+    borderRadius: 6,
+    overflow: "hidden",
+  },
+  copyBtn: {
+    width: 28,
+    height: 28,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#f3f4f6",
+  },
+  copyBtnText: {
+    fontSize: 16,
+    fontWeight: "700",
+    color: "#374151",
+    lineHeight: 20,
+  },
+  copyValue: {
+    width: 28,
+    textAlign: "center",
+    fontSize: 13,
+    fontWeight: "700",
+    color: "#1a1a1a",
+  },
+
+  /* ── TOTAL ── */
+  totalRow: {
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    alignItems: "center",
+    marginTop: 12,
+    marginBottom: 24,
+    gap: 12,
+  },
+  totalLabel: {
+    fontSize: 16,
+    fontWeight: "800",
+    color: "#1a1a1a",
+  },
+  totalBadge: {
+    backgroundColor: "#1a1a6e",
+    paddingHorizontal: 18,
+    paddingVertical: 7,
+    borderRadius: 8,
+  },
+  totalValue: {
+    color: "#FEC956",
+    fontWeight: "800",
+    fontSize: 16,
+  },
+
+  /* ── REVIEW BOX ── */
+  reviewBox: {
+    backgroundColor: "#E2E2E2",
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 16,
+  },
+  reviewSection: {
+    marginBottom: 20,
+  },
+  sectionSubtitle: {
+    fontSize: 13,
+    fontWeight: "900",
+    color: "#4D4D4D",
+    marginBottom: 6,
+  },
+  divider: {
+    borderTopWidth: 1,
+    borderTopColor: "#4B4A4A",
+    marginBottom: 12,
+  },
+  summaryItem: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 10,
+  },
+  summaryDocInfo: {
+    flex: 1,
+  },
+  summaryDocName: {
+    fontSize: 13,
+    fontWeight: "700",
+    color: "#374151",
+  },
+  summaryDocDesc: {
+    fontSize: 11,
+    color: "#6b7280",
+  },
+  summaryQty: {
+    fontSize: 13,
+    fontWeight: "700",
+    color: "#374151",
+  },
+  emptyText: {
+    fontSize: 12,
+    color: "#9ca3af",
+  },
+
+  /* ── FORM GRID ── */
+  formGrid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 12,
+  },
+  formGroupHalf: {
+    width: "47%",
+  },
+  formGroupFull: {
+    width: "100%",
+  },
+  formLabel: {
+    fontSize: 11,
+    color: "#6b7280",
+    marginBottom: 4,
+  },
+  formInput: {
+    backgroundColor: "#fff",
+    borderWidth: 1,
+    borderColor: "#d1d5db",
+    borderRadius: 10,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+  },
+  formInputText: {
+    fontSize: 13,
+    color: "#374151",
+  },
+  purposeInput: {
+    backgroundColor: "#fff",
+    borderWidth: 1,
+    borderColor: "#d1d5db",
+    borderRadius: 10,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    fontSize: 13,
+    color: "#374151",
+  },
+  warningText: {
+    textAlign: "center",
+    fontSize: 11,
+    color: "#9ca3af",
+    marginBottom: 20,
+  },
+
+  /* ── PAYMENT ── */
+  paymentTotalRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    borderTopWidth: 1,
+    borderTopColor: "#9ca3af",
+    paddingTop: 14,
+    marginTop: 4,
+  },
+  paymentTotalLabel: {
+    fontSize: 15,
+    fontWeight: "800",
+    color: "#374151",
+  },
+  paymentTotalAmount: {
+    fontSize: 22,
+    fontWeight: "800",
+    color: "#374151",
+  },
+  estimateRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 20,
+  },
+  estimateLabel: {
+    fontSize: 13,
+    fontWeight: "700",
+    color: "#374151",
+  },
+  estimateValue: {
+    fontSize: 13,
+    fontWeight: "800",
+    color: "#FEC956",
+  },
+  paymentMethodTitle: {
+    fontSize: 15,
+    fontWeight: "800",
+    color: "#1a1a6e",
+    marginBottom: 12,
+  },
+
+  /* ── RADIO PAYMENT METHOD ── */
+  methodRadioRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: "#e5e7eb",
+    borderRadius: 10,
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+    marginBottom: 10,
+    backgroundColor: "#fff",
+  },
+  methodRadioRowSelected: {
+    borderColor: "#1a1a6e",
+    borderWidth: 2,
+    backgroundColor: "#fff",
+  },
+  radioCircle: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: "#9ca3af",
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 14,
+    backgroundColor: "#fff",
+  },
+  radioCircleSelected: {
+    borderColor: "#1a1a6e",
+  },
+  radioInner: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: "#1a1a6e",
+  },
+  methodRadioLabel: {
+    fontSize: 14,
+    fontWeight: "600",
+    color: "#374151",
+    flex: 1,
+  },
+
+  /* ── COMPLETE ── */
+  completeContainer: {
+    alignItems: "center",
+    paddingVertical: 24,
+  },
+  successIconContainer: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    backgroundColor: "#3CC15E",
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 20,
+  },
+  completeTitle: {
+    fontSize: 22,
+    fontWeight: "800",
+    color: "#1a1a6e",
+    marginBottom: 12,
+  },
+  completeMessage: {
+    fontSize: 13,
+    color: "#6b7280",
+    textAlign: "center",
+    lineHeight: 20,
+    marginBottom: 24,
+    maxWidth: 320,
+  },
+  trackingBox: {
+    backgroundColor: "#d1d9ff",
+    borderWidth: 1,
+    borderColor: "#1a1a6e",
+    borderRadius: 12,
+    paddingHorizontal: 32,
+    paddingVertical: 16,
+    alignItems: "center",
+    marginBottom: 28,
+    width: "100%",
+  },
+  trackingLabel: {
+    fontSize: 12,
+    color: "#374151",
+    marginBottom: 4,
+  },
+  trackingId: {
+    fontSize: 28,
+    fontWeight: "800",
+    color: "#1a1a6e",
+  },
+  completeActions: {
+    flexDirection: "row",
+    gap: 12,
+  },
+
+  /* ── ACTIONS ── */
+  actionRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  btnBack: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 2,
+    paddingVertical: 8,
+    paddingHorizontal: 4,
+  },
+  btnBackText: {
+    fontSize: 15,
+    fontWeight: "600",
+    color: "#374151",
+  },
+  btnNext: {
+    backgroundColor: "#1F1F9C",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 10,
+  },
+  btnNextText: {
+    color: "#ffffff",
+    fontWeight: "800",
+    fontSize: 12,
+  },
+  btnSubmit: {
+    backgroundColor: "#FEC956",
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 24,
+    alignItems: "center",
+  },
+  btnSubmitText: {
+    color: "#1a1a6e",
+    fontWeight: "800",
+    fontSize: 14,
+  },
+  btnHome: {
+    backgroundColor: "#fff",
+    borderWidth: 1,
+    borderColor: "#374151",
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 24,
+    alignItems: "center",
+  },
+  btnHomeText: {
+    color: "#374151",
+    fontWeight: "700",
+    fontSize: 14,
+  },
+});
