@@ -31,7 +31,6 @@ export const AuthProvider = ({ children }) => {
                 } else {
                     setUser(null);
                 }
-                }
             } catch (error) {
                 console.error("Failed to restore session", error);
                 localStorage.removeItem('jwt_token');
