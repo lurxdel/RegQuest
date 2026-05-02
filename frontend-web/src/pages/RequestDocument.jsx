@@ -42,7 +42,7 @@ const RequestDocument = ({ currentUser }) => {
                     id: item.id,
                     name: item.document_name || item.name,
                     description: item.description || "Official academic record",
-                    price: item.price || 0,
+                    price: parseFloat(item.price) || 0,
                     isPerPg: item.is_per_pg || false
                 }));
 
@@ -89,7 +89,7 @@ const RequestDocument = ({ currentUser }) => {
     const calculateTotal = () => {
         return documents
             .filter(doc => selectedDocs.includes(doc.id))
-            .reduce((total, doc) => total + doc.price, 0);
+            .reduce((total, doc) => total + (parseFloat(doc.price) || 0), 0);
     };
 
     const handleNextStep = () => {
@@ -118,7 +118,7 @@ const RequestDocument = ({ currentUser }) => {
                 body: JSON.stringify({
                     document_type: selectedDocs[0],
                     quantity: selectedDocs.length,
-                    total_price: calculateTotal(),
+                    total_price: calculateTotal().toFixed(2),
                     status: "pending",
                     est_release_date: new Date().toISOString()
                 })
@@ -190,7 +190,7 @@ const RequestDocument = ({ currentUser }) => {
                                             <p className="document-desc">{doc.description}</p>
                                         </div>
                                         <div className="document-price">
-                                            P{doc.price}{doc.isPerPg ? '/pg' : ''}
+                                            P{Number(doc.price).toFixed(2)}{doc.isPerPg ? '/pg' : ''}
                                         </div>
                                     </div>
                                 );
@@ -199,7 +199,7 @@ const RequestDocument = ({ currentUser }) => {
 
                         <div className="total-section">
                             <span className="total-label">Total:</span>
-                            <div className="total-amount">{calculateTotal()}</div>
+                            <div className="total-amount">P{calculateTotal().toFixed(2)}</div>
                         </div>
 
                         <div className="action-buttons">
@@ -245,23 +245,27 @@ const RequestDocument = ({ currentUser }) => {
                                 <div className="form-grid">
                                     <div className="form-group">
                                         <label>Full Name</label>
-                                        <input type="text" value="Juan De Letchi" readOnly />
+                                        <input type="text" value={`${currentUser?.first_name || ''} ${currentUser?.last_name || ''}`.trim() || currentUser?.name || 'N/A'} readOnly />
                                     </div>
                                     <div className="form-group">
                                         <label>Year Level</label>
-                                        <input type="text" value="1st Year" readOnly />
+                                        <input type="text" value={
+                                            currentUser?.year_level 
+                                                ? `${currentUser.year_level}${['st', 'nd', 'rd'][(currentUser.year_level % 10) - 1] || 'th'} Year` 
+                                                : 'N/A'
+                                        } readOnly />
                                     </div>
                                     <div className="form-group">
                                         <label>Student ID</label>
-                                        <input type="text" value="2026202686" readOnly />
+                                        <input type="text" value={currentUser?.univ_id || currentUser?.studentId || currentUser?.student_id || 'N/A'} readOnly />
                                     </div>
                                     <div className="form-group">
                                         <label>Email</label>
-                                        <input type="email" value="juan@email.com" readOnly />
+                                        <input type="email" value={currentUser?.email || 'N/A'} readOnly />
                                     </div>
                                     <div className="form-group full-width">
                                         <label>Program / Course</label>
-                                        <input type="text" value="BS in Information Technology" readOnly />
+                                        <input type="text" value={currentUser?.program || currentUser?.course || 'N/A'} readOnly />
                                     </div>
                                 </div>
                             </div>
@@ -308,14 +312,14 @@ const RequestDocument = ({ currentUser }) => {
                                             <h4 className="summary-doc-name">{doc.name}</h4>
                                             <p className="summary-doc-desc">{doc.description}</p>
                                         </div>
-                                        <div className="summary-doc-qty">P{doc.price}{doc.isPerPg ? '/pg' : ''}</div>
+                                        <div className="summary-doc-qty">P{Number(doc.price).toFixed(2)}{doc.isPerPg ? '/pg' : ''}</div>
                                     </div>
                                 ))}
                             </div>
                             
                             <div className="payment-total-row">
                                 <span className="payment-total-label">Total Amount</span>
-                                <span className="payment-total-amount">P{calculateTotal()}</span>
+                                <span className="payment-total-amount">P{calculateTotal().toFixed(2)}</span>
                             </div>
                         </div>
 
