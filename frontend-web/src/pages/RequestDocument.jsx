@@ -1,13 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ChevronRight, ChevronLeft, CheckCircle, Check } from 'lucide-react';
+import { ChevronRight, ChevronLeft, CheckCircle, Check, AlertCircle } from 'lucide-react';
+import api from '../api/axios';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Button from '../components/Button';
 import Card from '../components/Card';
 import '../styles/RequestDocument.css';
 
-const API_URL = "http://127.0.0.1:8000/api/v1/documents/";
+const API_URL = "http://localhost:8000/api/v1/documents/";
 
 const RequestDocument = ({ currentUser }) => {
     const [documents, setDocuments] = useState([]);
@@ -18,6 +19,7 @@ const RequestDocument = ({ currentUser }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
     const [submitting, setSubmitting] = useState(false);
+    const [trackingNumber, setTrackingNumber] = useState('');
 
     const navigate = useNavigate();
     const stepperRef = useRef(null);
@@ -104,38 +106,36 @@ const RequestDocument = ({ currentUser }) => {
     };
 
     const submitRequest = async () => {
+        if (selectedDocs.length === 0) {
+            alert("Please select at least one document.");
+            return;
+        }
+
         try {
             setSubmitting(true);
 
-            const token = localStorage.getItem("jwt_token");
+            // Calculate a release date (e.g., 5 days from now)
+            const releaseDate = new Date();
+            releaseDate.setDate(releaseDate.getDate() + 5);
 
-            const response = await fetch("http://127.0.0.1:8000/api/v1/requests/", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`
-                },
-                body: JSON.stringify({
-                    document_type: selectedDocs[0],
-                    quantity: selectedDocs.length,
-                    total_price: calculateTotal().toFixed(2),
-                    status: "pending",
-                    est_release_date: new Date().toISOString()
-                })
+            const response = await api.post("/requests/", {
+                document_type: selectedDocs[0], // DRF expects the ID for ForeignKey
+                quantity: 1,
+                total_price: calculateTotal().toFixed(2),
+                est_release_date: releaseDate.toISOString()
             });
 
-            const data = await response.json();
-            console.log(data); // 👈 IMPORTANT
+            console.log("Submission successful:", response.data);
 
-            if (!response.ok) {
-                throw new Error("Submission failed");
-            }
-
+            setTrackingNumber(response.data.tracking_number);
             setCurrentStep(4);
 
         } catch (error) {
-            console.error(error);
-            alert("Submission failed. Check console.");
+            console.error("Submission error:", error.response?.data || error.message);
+            const errorMsg = error.response?.data 
+                ? Object.entries(error.response.data).map(([k, v]) => `${k}: ${v}`).join('\n')
+                : error.message;
+            alert(`Submission failed:\n${errorMsg}`);
         } finally {
             setSubmitting(false);
         }
@@ -380,11 +380,11 @@ const RequestDocument = ({ currentUser }) => {
                             
                             <div className="tracking-box">
                                 <p className="tracking-label">Your Tracking ID</p>
-                                <h3 className="tracking-id">RQ-097323</h3>
+                                <h3 className="tracking-id">{trackingNumber || "N/A"}</h3>
                             </div>
                             
                             <div className="complete-actions">
-                                <Button className="btn-track" onClick={() => navigate('/track-status')}>
+                                <Button className="btn-track" onClick={() => navigate('/track-status', { state: { trackingNumber: trackingNumber } })}>
                                     Track Status
                                 </Button>
                                 <Link to="/home" className="btn-home">
